@@ -1,0 +1,13 @@
+@model RegistrationModel
+@{
+    ViewData["Title"] = "Регистрация";
+}
+
+<form asp-action="LoginProceed" method="post">
+    <input type="text" asp-for="login"/>
+    <input type="text" asp-for="password"/>
+    <input type="text">
+    <input type="text" asp-for="email"/>
+    <input type="text" asp-for="phone"/>
+    <button type="submit">Войти</button>
+</form>

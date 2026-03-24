@@ -1,0 +1,10 @@
+@model loginModel
+@{
+    ViewData["Title"] = "Вход";
+}
+
+<form asp-action="LoginProceed" method="post">
+    <input type="text" asp-for="login"/>
+    <input type="text" asp-for="password"/>
+    <button type="submit">Войти</button>
+</form>
