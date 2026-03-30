@@ -1,6 +1,12 @@
-@model BillutinboardModel
+@using Microsoft.AspNetCore.Http.Features
+@model List<BillutinboardModel>
 @{
     ViewData["Title"] = "Вход";
 }
 
-<div>test</div>
+<div>объявления</div>
+
+@foreach(var Item in Model)
+{
+    <p>@Item.ID @Item.ADTitle @Item.ADDescription @Item.ADImageUrl @Item.ADPrice @Item.ADType @Item.AuthorPhoneNumber @Item.Address @Item.PublicationDate @Item.UserID</p>
+}

@@ -16,13 +16,6 @@ namespace Handy.Controllers
         {
             _configuration = configuration;
         }
-
-        [HttpGet("login")]
-        public IActionResult Login()
-        {
-            return View();
-        }
-
         public IDbConnection Connection
         {
             get
@@ -30,6 +23,13 @@ namespace Handy.Controllers
                 return new SqlConnection(_configuration.GetConnectionString("SQLConnection"));
             }
         }
+
+        [HttpGet("login")]
+        public IActionResult Login()
+        {
+            return View();
+        }
+
         [HttpGet("register")]
         public IActionResult Register()
         {
