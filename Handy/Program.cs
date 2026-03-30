@@ -1,3 +1,7 @@
+using System.Security.Cryptography.X509Certificates;
+using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
+using Microsoft.EntityFrameworkCore;
+
 namespace Handy
 {
     public class Program
@@ -9,6 +13,8 @@ namespace Handy
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
+
+
             var app = builder.Build();
 
             // Configure the HTTP request pipeline.
@@ -18,7 +24,7 @@ namespace Handy
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
-            
+
             app.UseHttpsRedirection();
             app.UseStaticFiles();
 
