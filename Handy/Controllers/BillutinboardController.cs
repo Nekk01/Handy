@@ -52,5 +52,35 @@ namespace Handy
             }
             return View(Items);
         }
+        
+        // Создание объявления
+        [HttpGet("Billutinboard/Create")]
+        public IActionResult Create()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult Submit(BillutinboardModel model)
+        {
+            using(IDbConnection connection = Connection)
+            {
+                connection.Open();
+
+                string sql = "INSERT INTO Advertisements (ADTitle, ADDescription, ADImageUrl, ADPrice, ADType, AuthorPhoneNumber, Address, PublicationDate, UserID) VALUES (@ADTitle, @ADDescription, @ADImageUrl, @ADPrice, @ADType, @AuthorPhoneNumber, @Address, GETDATE(), 1);";
+                
+                using var command = new SqlCommand(sql, (SqlConnection)connection);
+                
+                command.Parameters.Add(new SqlParameter("@ADTitle", SqlDbType.NVarChar, 50) { Value = model.ADTitle });
+                command.Parameters.Add(new SqlParameter("@ADDescription", SqlDbType.NVarChar, 50) { Value = model.ADDescription });
+                command.Parameters.Add(new SqlParameter("@ADImageUrl", SqlDbType.NVarChar, 50) { Value = model.ADImageUrl });
+                command.Parameters.Add(new SqlParameter("@ADPrice", SqlDbType.NVarChar, 50) { Value = model.ADPrice });
+                command.Parameters.Add(new SqlParameter("@ADType", SqlDbType.Int) { Value = model.ADType });
+                command.Parameters.Add(new SqlParameter("@AuthorPhoneNumber", SqlDbType.NVarChar, 50) { Value = model.AuthorPhoneNumber });
+                command.Parameters.Add(new SqlParameter("@Address", SqlDbType.NVarChar, 50) { Value = model.Address });
+                
+                int result = command.ExecuteNonQuery();
+            }
+            return Redirect(Url.Action("Billutinboard", "Billutinboard"));
+        }
     }
 }

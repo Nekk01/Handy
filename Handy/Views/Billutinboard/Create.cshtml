@@ -1,0 +1,20 @@
+@using Microsoft.AspNetCore.Http.Features
+@model BillutinboardModel
+@{
+    ViewData["Title"] = "Вход";
+}
+<div>СОЗДАНИЕ ОБЪЯВЛЕНИЙ</div>
+<form action="Submit" method="post">
+    <input type="text" asp-for="ADTitle" placeholder="Название объявления"/>
+    <input type="text" asp-for="ADDescription" placeholder="Описание объявления"/>
+    <input type="text" asp-for="ADImageUrl" placeholder="Ссылка на картинку"/>
+    <input type="number" asp-for="ADPrice" placeholder="Цена" min="0" step="1"/>
+    <select asp-for="ADType">
+        <option value="0">Выберите тип объявления</option>
+        <option value="1">Услуга</option>
+        <option value="2">Товар</option>
+    </select>
+    <input type="text" asp-for="AuthorPhoneNumber" placeholder="Ваш номер телефона"/>
+    <input type="text" asp-for="Address" placeholder="Адрес"/>
+    <button type="submit">Создать</button>
+</form>
