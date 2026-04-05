@@ -3,11 +3,45 @@
     ViewData["Title"] = "Регистрация";
 }
 
-<form asp-action="RegisterProceed" method="post">
-    <input type="text" asp-for="email" placeholder="Почта"/>
-    <input type="text" asp-for="displayName" placeholder="Отображаемое имя"/>
-    <input type="text" asp-for="password" placeholder="Пароль"/>
-    <input type="text" placeholder="Подтверждение пароля">
-    <input type="text" asp-for="phone" placeholder="Номер телефона"/>
-    <button type="submit">Войти</button>
-</form>
+<link rel="stylesheet" href="~/css/home.css" />
+<link rel="stylesheet" href="~/css/auth.css" />
+
+<div class="home-page">
+    <div class="home-card auth-card register-card">
+        <h1 class="auth-title">Регистрация</h1>
+
+        <form asp-action="RegisterProceed" method="post" class="auth-form">
+            <div class="form-group">
+                <label asp-for="login" class="form-label">Логин</label>
+                <input asp-for="login" class="form-input" placeholder="Придумайте логин" />
+                <span asp-validation-for="login" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="password" class="form-label">Пароль</label>
+                <input asp-for="password" type="password" class="form-input" placeholder="Придумайте пароль" />
+                <span asp-validation-for="password" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Подтверждение пароля</label>
+                <input type="password" class="form-input" placeholder="Повторите пароль" />
+                <span class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="email" class="form-label">Почта</label>
+                <input asp-for="email" type="email" class="form-input" placeholder="example@mail.com" />
+                <span asp-validation-for="email" class="error-message"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="phone" class="form-label">Номер телефона</label>
+                <input asp-for="phone" class="form-input" placeholder="+7 (999) 123-45-67" />
+                <span asp-validation-for="phone" class="error-message"></span>
+            </div>
+
+            <button type="submit" class="btn-submit">Зарегистрироваться</button>
+        </form>
+    </div>
+</div>

@@ -1,0 +1,268 @@
+﻿namespace Handy.wwwroot.css
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+    width: 100%;
+}
+/* home.css - обновленная версия с эффектом стекла */
+.home-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #213555;
+    font-family: 'Roboto', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+body {
+    background-color: #213555;
+}
+/* Декоративные элементы фона */
+.home-page::before {
+    content: '';
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 50%;
+    top: -200px;
+    right: -150px;
+    animation: float 8s ease-in-out infinite;
+}
+
+.home-page::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 50%;
+    bottom: -150px;
+    left: -100px;
+    animation: float 10s ease-in-out infinite reverse;
+}
+
+@keyframes float {
+    0%, 100% {
+        transform: translateY(0px) translateX(0px);
+    }
+
+    50% {
+        transform: translateY(-25px) translateX(15px);
+    }
+}
+
+/* Карточка по центру с эффектом стекла */
+.home-card {
+    background: rgba(21, 32, 47, 0.7);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-radius: 30px;
+    padding: 50px 60px;
+    box-shadow: 0 25px 45px -12px rgba(0,0,0,0.4);
+    max-width: 600px;
+    width: 90%;
+    text-align: center;
+    animation: fadeInUp 0.6s ease-out;
+    position: relative;
+    z-index: 1;
+    border: 1px solid rgba(255,255,255,0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .home-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 35px 50px -15px rgba(0,0,0,0.5);
+        background: rgba(21, 32, 47, 0.75);
+    }
+
+    
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Контейнер для кнопок сверху */
+.top-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: flex-end;
+    margin-bottom: 60px;
+    animation: fadeIn 0.8s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+/* Светло-серые кнопки с эффектом стекла */
+.btn-top {
+    padding: 10px 24px;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    display: inline-block;
+    background: rgba(200, 200, 200, 0.2);
+    color: #e0e0e0;
+    border: 1px solid rgba(255,255,255,0.15);
+    backdrop-filter: blur(4px);
+    position: relative;
+    overflow: hidden;
+}
+
+    .btn-top:hover {
+        background: rgba(200, 200, 200, 0.35);
+        color: white;
+        transform: translateY(-2px);
+        border-color: rgba(255,255,255,0.3);
+    }
+
+    .btn-top:active {
+        transform: translateY(0);
+    }
+
+.btn-login-top {
+    background: rgba(200, 200, 200, 0.25);
+    color: #ffffff;
+}
+
+.btn-register-top {
+    background: rgba(200, 200, 200, 0.15);
+    color: #d0d0d0;
+}
+
+/* Заголовок */
+.home-title {
+    color: #ffffff;
+    font-size: 3.5rem;
+    margin-bottom: 25px;
+    font-weight: 700;
+    background: linear-gradient(135deg, #ffffff 0%, #8BA3C6 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: fadeIn 0.8s ease-out;
+    letter-spacing: -0.5px;
+}
+
+/* Описание */
+.home-description {
+    color: #C0D0E5;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    animation: fadeIn 1s ease-out;
+}
+
+    .home-description a {
+        color: #8BA3C6;
+        text-decoration: none;
+        font-weight: 600;
+        border-bottom: 1px dashed rgba(139,163,198,0.5);
+        transition: all 0.3s ease;
+    }
+
+        .home-description a:hover {
+            color: #a8c0e0;
+            border-bottom-color: #8BA3C6;
+        }
+
+/* Декоративная линия */
+.decorative-line {
+    width: 60px;
+    height: 3px;
+    background: linear-gradient(90deg, rgba(200,200,200,0.5), rgba(200,200,200,0.1));
+    margin: 30px auto 0;
+    border-radius: 3px;
+    transition: width 0.3s;
+}
+
+.home-card:hover .decorative-line {
+    width: 100px;
+    background: linear-gradient(90deg, rgba(220,220,220,0.7), rgba(220,220,220,0.2));
+}
+
+/* Инфо текст снизу */
+.info-text {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: #8BA3C6;
+    font-size: 0.85rem;
+}
+
+@media (max-width: 640px) {
+    .home-card {
+        padding: 35px 30px;
+    }
+
+    .top-buttons {
+        margin-bottom: 40px;
+    }
+
+    .home-title {
+        font-size: 2.5rem;
+    }
+
+    .home-description {
+        font-size: 1rem;
+    }
+
+    .btn-top {
+        padding: 8px 20px;
+        font-size: 0.85rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .home-card {
+        padding: 25px 20px;
+    }
+
+    .top-buttons {
+        gap: 10px;
+        margin-bottom: 30px;
+    }
+
+    .home-title {
+        font-size: 2rem;
+    }
+
+    .btn-top {
+        padding: 6px 16px;
+        font-size: 0.8rem;
+    }
+}
+@keyframes ripple {
+    0% {
+        transform: scale(0);
+        opacity: 0.6;
+    }
+
+    100% {
+        transform: scale(4);
+        opacity: 0;
+    }
+}
