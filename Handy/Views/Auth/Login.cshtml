@@ -3,8 +3,28 @@
     ViewData["Title"] = "Вход";
 }
 
-<form asp-action="LoginProceed" method="post">
-    <input type="text" asp-for="login"/>
-    <input type="text" asp-for="password"/>
-    <button type="submit">Войти</button>
-</form>
+<link rel="stylesheet" href="~/css/home.css" />
+<link rel="stylesheet" href="~/css/auth.css" />
+
+<div class="home-page">
+    <div class="home-card auth-card">
+        <h1 class="auth-title">Вход</h1>
+
+        <form asp-action="LoginProceed" method="post" class="auth-form">
+            <div class="form-group">
+                <label asp-for="login" class="form-label">Логин</label>
+                <input asp-for="login" class="form-input" placeholder="Введите ваш логин" />
+                <span asp-validation-for="login" class="error-message"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="password" class="form-label">Пароль</label>
+                <input asp-for="password" type="password" class="form-input" placeholder="Введите ваш пароль" />
+                <span asp-validation-for="password" class="error-message"></span>
+            </div>
+
+            <button type="submit" class="btn-submit">Войти</button>
+        </form>
+    </div>
+</div>
+
+<script src="~/js/auth.js"></script>

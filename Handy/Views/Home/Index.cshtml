@@ -2,9 +2,45 @@
     ViewData["Title"] = "Home Page";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    <a asp-controller="Auth" asp-action="login">loginPage</a>
-    <a asp-controller="Auth" asp-action="Register">RegisterPage</a>
+<link rel="stylesheet" href="~/css/home.css" />
+<link rel="stylesheet" href="~/css/animations.css" />
+
+
+
+<div class="home-page">
+    <div class="home-card">
+        <!-- Эффект отражения на стекле -->
+        <div class="glass-reflection"></div>
+
+        <!-- Кнопки сверху справа -->
+        <div class="top-buttons">
+            <a asp-controller="Auth" asp-action="Login" class="btn-top btn-login-top">
+                <span class="btn-icon">→</span> Войти
+            </a>
+            <a asp-controller="Auth" asp-action="Register" class="btn-top btn-register-top">
+                <span class="btn-icon"></span> Регистрация
+            </a>
+        </div>
+
+        <!-- Заголовок -->
+        <h1 class="home-title">
+            <span>Welcome</span>
+        </h1>
+
+        <!-- Описание -->
+        <p class="home-description">
+            Learn about
+            <a href="https://learn.microsoft.com/aspnet/core"
+               target="_blank"
+               rel="noopener noreferrer">
+                building Web apps with ASP.NET Core
+            </a>
+        </p>
+
+        <!-- Декоративная линия -->
+        <div class="decorative-line"></div>
+
+        
+    </div>
 </div>
+<script src="~/js/home.js"></script>

@@ -1,0 +1,52 @@
+﻿namespace Handy.wwwroot.css
+/* Дополнительные анимации для кнопок */
+.btn-top {
+    position: relative;
+    z-index: 1;
+}
+
+/* Эффект пульсации для кнопки входа */
+.btn-login-top {
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% {
+        box-shadow: 0 4px 15px rgba(200,200,200,0.2);
+    }
+
+    50% {
+        box-shadow: 0 4px 25px rgba(200,200,200,0.35);
+    }
+}
+
+/* Эффект наведения с увеличением */
+.btn-top:hover {
+    transform: translateY(-2px) scale(1.02);
+}
+
+/* Эффект загрузки (если нужно) */
+.btn-loading {
+    pointer-events: none;
+    opacity: 0.7;
+}
+
+    .btn-loading::after {
+        content: '';
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        top: 50%;
+        right: 20px;
+        margin-top: -8px;
+        border: 2px solid white;
+        border-top-color: transparent;
+        border-radius: 50%;
+        animation: spin 0.6s linear infinite;
+    }
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
