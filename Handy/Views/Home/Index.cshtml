@@ -14,17 +14,36 @@
 
         <!-- Кнопки сверху справа -->
         <div class="top-buttons">
-            <a asp-controller="Auth" asp-action="Login" class="btn-top btn-login-top">
-                <span class="btn-icon">→</span> Войти
-            </a>
-            <a asp-controller="Auth" asp-action="Register" class="btn-top btn-register-top">
-                <span class="btn-icon"></span> Регистрация
-            </a>
+            @if (User.Identity.IsAuthenticated)
+            {
+                <a asp-controller="Auth" asp-action="logout" class="btn-top btn-login-top">
+                       <span class="btn-icon"></span> Выйти из аккаунта
+                    </a>
+                    <a asp-controller="Billutinboard" asp-action="Billutinboard" class="btn-top btn-login-top">
+                       <span class="btn-icon"></span> Доска объявлений
+                    </a>
+            }
+            else
+            {
+                <a asp-controller="Auth" asp-action="Login" class="btn-top btn-login-top">
+                   <span class="btn-icon"></span> Войти
+                </a>
+                <a asp-controller="Auth" asp-action="Register" class="btn-top btn-register-top">
+                    <span class="btn-icon"></span> Регистрация
+                </a>
+            }
+
+            @* <a asp-controller="Auth" asp-action="Login" class="btn-top btn-login-top"> *@
+            @*     <span class="btn-icon">→</span> Войти *@
+            @* </a> *@
+            @* <a asp-controller="Auth" asp-action="Register" class="btn-top btn-register-top"> *@
+            @*     <span class="btn-icon"></span> Регистрация *@
+            @* </a> *@
         </div>
 
         <!-- Заголовок -->
         <h1 class="home-title">
-            <span>Welcome</span>
+            <span>Добро пожаловать!</span>
         </h1>
 
         <!-- Описание -->
@@ -36,7 +55,8 @@
                 building Web apps with ASP.NET Core
             </a>
         </p>
-
+        <p class="home-description">В этом тексте должна содержаться полезная информация. Однако в этот раз этого не произошло.</p>
+        <img src="/images/sticker.webp" alt="" width="200px" height="200px">
         <!-- Декоративная линия -->
         <div class="decorative-line"></div>
 

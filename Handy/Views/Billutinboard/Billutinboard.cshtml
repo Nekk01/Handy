@@ -9,5 +9,7 @@
 
 @foreach(var Item in Model)
 {
-    <p>@Item.ID @Item.ADTitle @Item.ADDescription @Item.ADPreviewImageUrl @Item.ADPrice @Item.ADType @Item.Address @Item.PublicationDate @Item.UserID</p>
+    <p>
+        <a href="Billutinboard/@Item.ID">@Item.ID @Item.ADTitle @Item.ADDescription @Item.ADPreviewImageUrl @Item.ADPrice @Item.ADType @Item.Address @Item.PublicationDate @Item.UserID</a>
+    </p>
 }

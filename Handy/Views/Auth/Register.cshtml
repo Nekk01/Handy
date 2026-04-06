@@ -12,9 +12,9 @@
 
         <form asp-action="RegisterProceed" method="post" class="auth-form">
             <div class="form-group">
-                <label asp-for="login" class="form-label">Логин</label>
-                <input asp-for="login" class="form-input" placeholder="Придумайте логин" />
-                <span asp-validation-for="login" class="error-message"></span>
+                <label asp-for="email" class="form-label">Электронная почта</label>
+                <input asp-for="email" class="form-input" placeholder="Введите вашу электронную почту" />
+                <span asp-validation-for="email" class="error-message"></span>
             </div>
 
             <div class="form-group">
@@ -29,11 +29,11 @@
                 <span class="error-message"></span>
             </div>
 
-            <div class="form-group">
-                <label asp-for="email" class="form-label">Почта</label>
-                <input asp-for="email" type="email" class="form-input" placeholder="example@mail.com" />
-                <span asp-validation-for="email" class="error-message"></span>
-            </div>
+            @* <div class="form-group"> *@
+            @*     <label asp-for="email" class="form-label">Почта</label> *@
+            @*     <input asp-for="email" type="email" class="form-input" placeholder="example@mail.com" /> *@
+            @*     <span asp-validation-for="email" class="error-message"></span> *@
+            @* </div> *@
 
             <div class="form-group">
                 <label asp-for="phone" class="form-label">Номер телефона</label>

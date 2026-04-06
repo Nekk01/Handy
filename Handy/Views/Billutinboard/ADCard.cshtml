@@ -1,0 +1,18 @@
+@using Microsoft.AspNetCore.Http.Features
+@using Microsoft.EntityFrameworkCore.Metadata.Internal
+@model BillutinboardModel
+@{
+    ViewData["Title"] = "Вход";
+}
+
+<div>
+    Большая карточка объявления
+</div>
+
+<p>
+    @Model.ID @Model.ADTitle @Model.ADDescription @Model.ADPreviewImageUrl @Model.ADPrice @Model.ADType @Model.Address @Model.PublicationDate @Model.UserID
+</p>
+
+@foreach (var item in Model.Images){
+    <p>@item</p>
+}

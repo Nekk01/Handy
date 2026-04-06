@@ -11,5 +11,6 @@ namespace Handy.Models
         public string Address { get; set; }
         public DateTime PublicationDate { get; set; }
         public long UserID { get; set; }
+        public List<string> Images { get; set; }
     }
 }
