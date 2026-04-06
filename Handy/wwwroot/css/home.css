@@ -9,7 +9,7 @@ html, body {
     height: 100%;
     width: 100%;
 }
-/* home.css - обновленная версия с эффектом стекла */
+/*версия с эффектом стекла */
 .home-page {
     min-height: 100vh;
     display: flex;

@@ -23,7 +23,7 @@ function addRippleEffect() {
     });
 }
 
-// Эффект параллакса для карточки (опционально)
+// Эффект параллакса для карточки
 function addParallaxEffect() {
     const card = document.querySelector('.home-card');
     if (card) {
@@ -44,7 +44,7 @@ function addParallaxEffect() {
     }
 }
 
-// Анимация появления элементов при скролле (опционально)
+// Анимация появления элементов при скролле
 function addScrollAnimation() {
     const elements = document.querySelectorAll('.home-title, .home-description, .top-buttons');
     const observer = new IntersectionObserver((entries) => {

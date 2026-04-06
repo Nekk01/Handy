@@ -5,14 +5,89 @@
     ViewData["Title"] = "Вход";
 }
 
-<div>
-    Большая карточка объявления
+<link rel="stylesheet" href="~/css/home.css" />
+<link rel="stylesheet" href="~/css/details.css" />
+
+<div class="home-page">
+    <div class="details-container">
+
+<div class="details-card">
+            <div class="details-grid">
+                <!-- Левая колонка - изображения -->
+                <div class="details-gallery">
+                    <div class="main-image">
+                        @if (!string.IsNullOrEmpty(Model.ADPreviewImageUrl))
+                        {
+                            <img src="@Model.ADPreviewImageUrl" alt="@Model.ADTitle" id="mainImage" />
+                        }
+                        else if (Model.Images != null && Model.Images.Any())
+                        {
+                            <img src="@Model.Images.First()" alt="@Model.ADTitle" id="mainImage" />
+                        }
+                        else
+                        {
+                            <div class="image-placeholder">
+                                <span>📷</span>
+                                <p>Нет изображения</p>
+                            </div>
+                        }
+                    </div>
+                    
+                    @if (Model.Images != null && Model.Images.Count() > 1)
+                    {
+                        <div class="thumbnail-list">
+                            @foreach (var image in Model.Images)
+                            {
+                                <div class="thumbnail" onclick="changeMainImage('@image')">
+                                    <img src="@image" alt="Миниатюра" />
+                                </div>
+                            }
+                        </div>
+                    }
+                </div>
+
+                <!-- Правая колонка - информация -->
+                <div class="details-info">
+                    <h1 class="details-title">@Model.ADTitle</h1>
+                    
+                    <div class="details-price">
+                        @Model.ADPrice.ToString("N0") ₽
+                    </div>
+                    
+                    <div class="info-grid">
+                        <div class="info-item">
+                            <div class="info-label">Тип объявления</div>
+                            <div class="info-value @(Model.ADType == 1 ? "type-product" : "type-service")">
+                                @(Model.ADType == 1 ? "Услуга" : "Товар")
+                            </div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-label">Дата публикации</div>
+                            <div class="info-value">@Model.PublicationDate.ToString("dd MMMM yyyy")</div>
+                        </div>
+                        
+                        <div class="info-item">
+                            <div class="info-label">Адрес</div>
+                            <div class="info-value">
+                                <span class="location-icon"></span>
+                                @Model.Address
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="details-description">
+                        <div class="description-label">Описание</div>
+                        <div class="description-text">@Model.ADDescription</div>
+                    </div>
+                    
+                    
+                    
+                    <div class="info-note">
+                        <small>ID объявления: @Model.ID</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
-
-<p>
-    @Model.ID @Model.ADTitle @Model.ADDescription @Model.ADPreviewImageUrl @Model.ADPrice @Model.ADType @Model.Address @Model.PublicationDate @Model.UserID
-</p>
-
-@foreach (var item in Model.Images){
-    <p>@item</p>
-}

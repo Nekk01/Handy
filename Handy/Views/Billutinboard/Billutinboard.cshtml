@@ -4,12 +4,76 @@
     ViewData["Title"] = "Вход";
 }
 
-<div>объявления</div>
-<a asp-controller="Billutinboard" asp-action="Create">Создать объявление</a>
+<link rel="stylesheet" href="~/css/home.css" />
+<link rel="stylesheet" href="~/css/cards.css" />
 
-@foreach(var Item in Model)
-{
-    <p>
-        <a href="Billutinboard/@Item.ID">@Item.ID @Item.ADTitle @Item.ADDescription @Item.ADPreviewImageUrl @Item.ADPrice @Item.ADType @Item.Address @Item.PublicationDate @Item.UserID</a>
-    </p>
-}
+<div class="home-page">
+    <div class="container">
+        <!-- Header с кнопкой создания -->
+        <div class="page-header">
+            <h1 class="page-title">Объявления</h1>
+            <a asp-controller="Billutinboard" asp-action="Create" class="btn-create-ad">
+                <span class="btn-icon">+</span> Создать объявление
+            </a>
+        </div>
+
+        <!-- Сетка карточек -->
+        <div class="cards-grid">
+            @foreach (var Item in Model)
+            {
+                <div class="ad-card-item">
+                    <a href="Billutinboard/@Item.ID" class="card-link">
+                        <div class="card-image">
+                            @if (!string.IsNullOrEmpty(Item.ADPreviewImageUrl))
+                            {
+                                <img src="@Item.Images.First()" alt="@Item.ADTitle" />
+                            }
+                            else
+                            {
+                                <div class="card-image-placeholder">
+                                    <span>📷</span>
+                                </div>
+                            }
+                            
+                            <!-- Тип объявления -->
+                            <span class="card-type @(Item.ADType == 1 ? "type-product" : "type-service")">
+                                @(Item.ADType == 1 ? "Услуга" : "Товар")
+                            </span>
+                        </div>
+                        
+                        <div class="card-content">
+                            <h3 class="card-title">@Item.ADTitle</h3>
+                            <p class="card-description">@(Item.ADDescription?.Length > 100 ? Item.ADDescription.Substring(0, 100) + "..." : Item.ADDescription)</p>
+                            
+                            <div class="card-price">
+                                @Item.ADPrice.ToString("N0") ₽
+                            </div>
+                            
+                            <div class="card-footer">
+                                <div class="card-location">
+                                    <span class="location-icon"></span>
+                                    <span>@Item.Address</span>
+                                </div>
+                                <div class="card-date">
+                                    <span class="date-icon">📅</span>
+                                    <span>@Item.PublicationDate.ToString("dd.MM.yyyy")</span>
+                                </div>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+
+        <!-- Если нет объявлений -->
+        @if (!Model.Any())
+        {
+            <div class="empty-state">
+                <div class="empty-icon"></div>
+                <h3>Нет объявлений</h3>
+                <p>Будьте первым, кто создаст объявление!</p>
+                <a asp-controller="Billutinboard" asp-action="Create" class="btn-create-first">Создать первое объявление</a>
+            </div>
+        }
+    </div>
+</div>

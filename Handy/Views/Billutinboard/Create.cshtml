@@ -21,8 +21,14 @@
                 <label asp-for="ADDescription" class="form-label">Описание объявления</label>
                 <textarea asp-for="ADDescription" class="form-textarea" rows="4" placeholder="Опишите ваше предложение..."></textarea>
             </div>
-
-            <input type="file" name="files" class="form-control" multiple accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp"/>
+            <div class="form-group">
+                <label class="form-label">Изображения</label>
+                <div class="file-input-wrapper">
+                    <input type="file" name="files" class="file-input" multiple accept=".jpg, .jpeg, .png, .gif, .bmp, .tiff, .webp"/>
+                </div>
+            <div class="file-info" id="fileInfo"></div>
+                <small class="form-hint"> Поддерживаемые форматы: JPG, PNG, GIF, BMP, TIFF, WEBP</small>
+            </div>
             @* <div class="form-group"> *@
             @*     <label asp-for="ADPreviewImageUrl" class="form-label">Ссылка на картинку</label> *@
             @*     <input asp-for="ADPreviewImageUrl" class="form-input" placeholder="https://example.com/photo.jpg" /> *@
@@ -38,8 +44,8 @@
                     <label asp-for="ADType" class="form-label">Выберите тип объявления</label>
                     <select asp-for="ADType" class="form-select">
                         <option value="1">Выберите тип объявления</option>
-                        <option value="2">Товар</option>
-                        <option value="3">Услуга</option>
+                        <option value="2">Услуга</option>
+                        <option value="3">Товар</option>
                     </select>
                 </div>
             </div>

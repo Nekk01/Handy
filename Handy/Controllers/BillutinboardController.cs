@@ -38,7 +38,7 @@ namespace Handy
                 string sql = "SELECT ad_id, title, description, price_amount, category_id, ad_address, created_at, user_id FROM ADS;";
                 using var command = new SqlCommand(sql, (SqlConnection)connection);
                 using var reader = await command.ExecuteReaderAsync();
-
+                
                 while (await reader.ReadAsync())
                 {
                     Items.Add(new BillutinboardModel
@@ -181,13 +181,14 @@ namespace Handy
                     {
                         string fileName = Guid.NewGuid().ToString() + Path.GetExtension(file.FileName);
                         string filePath = Path.Combine(uploadsFolder, fileName);
+                        string filePathSQL = "/uploads/"+fileName;
 
                         using (var stream = new FileStream(filePath, FileMode.Create))
                         {
                             await file.CopyToAsync(stream);
                         }
 
-                        commandSqlAddImages.Parameters["@image_path"].Value = filePath;
+                        commandSqlAddImages.Parameters["@image_path"].Value = filePathSQL;
                         commandSqlAddImages.Parameters["@ad_id"].Value = lastAdId;
 
                         commandSqlAddImages.ExecuteNonQuery();

@@ -162,3 +162,110 @@ input[type="number"].form-input {
         font-size: 1.8rem !important;
     }
 }
+
+/* Стили для поля загрузки файлов */
+.file-input {
+    padding: 0 !important;
+    cursor: pointer;
+    background: transparent !important;
+    border: none !important;
+}
+
+.file-input::-webkit-file-upload-button {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.9), rgba(5, 150, 105, 0.9));
+    border: none;
+    border-radius: 12px;
+    padding: 12px 24px;
+    color: white;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 16px;
+    width: auto;
+}
+
+.file-input::-webkit-file-upload-button:hover {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 1), rgba(5, 150, 105, 1));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+}
+
+.file-input::-webkit-file-upload-button:active {
+    transform: translateY(0);
+}
+
+.file-input::file-selector-button {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 0.9), rgba(5, 150, 105, 0.9));
+    border: none;
+    border-radius: 12px;
+    padding: 12px 24px;
+    color: white;
+    font-weight: 600;
+    font-size: 0.95rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-right: 16px;
+}
+
+.file-input::file-selector-button:hover {
+    background: linear-gradient(135deg, rgba(16, 185, 129, 1), rgba(5, 150, 105, 1));
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(16, 185, 129, 0.3);
+}
+
+.file-input::file-selector-button:active {
+    transform: translateY(0);
+}
+
+/* Стиль для текста выбранного файла */
+.file-input {
+    color: #C0D0E5;
+    font-size: 0.9rem;
+}
+
+/* Стили для информации о выбранных файлах */
+.file-info {
+    margin-top: 12px;
+    font-size: 0.85rem;
+    color: #C0D0E5;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.file-tag {
+    background: rgba(139, 163, 198, 0.15);
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    color: #C0D0E5;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.file-tag .remove-file {
+    cursor: pointer;
+    color: #ff6b6b;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: color 0.2s;
+}
+
+.file-tag .remove-file:hover {
+    color: #ff4444;
+}
+
+.form-hint {
+    color: #C0D0E5;
+    font-size: 0.8rem;
+    margin-top: 8px;
+    opacity: 0.8;
+}
+
+.form-hint i, 
+.form-hint em {
+    font-style: normal;
+}
