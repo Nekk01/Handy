@@ -1,6 +1,7 @@
 using System.Security.Cryptography.X509Certificates;
 using Microsoft.AspNetCore.Mvc.ModelBinding.Binders;
 using Microsoft.EntityFrameworkCore;
+using DotNetEnv;
 
 namespace Handy
 {
@@ -8,7 +9,12 @@ namespace Handy
     {
         public static void Main(string[] args)
         {
+            //dotNetEnv
+            DotNetEnv.Env.Load();
+            
             var builder = WebApplication.CreateBuilder(args);
+
+            var connectionString = builder.Configuration.GetConnectionString("SQLConnection");
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
