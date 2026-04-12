@@ -14,6 +14,9 @@ namespace Handy
             
             var builder = WebApplication.CreateBuilder(args);
 
+            // Services
+            builder.Services.AddScoped<IAuthService, AuthService>();
+
             var connectionString = builder.Configuration.GetConnectionString("SQLConnection");
 
             // Add services to the container.
