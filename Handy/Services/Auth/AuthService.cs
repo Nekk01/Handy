@@ -28,7 +28,7 @@ public class AuthService : IAuthService
         {
             connection.Open();
 
-            string sql = "SELECT email, password FROM Users WHERE email = @Email AND password = @Password;";
+            string sql = "SELECT user_ID, email, password FROM Users WHERE email = @Email AND password = @Password;";
             using var command = new SqlCommand(sql, (SqlConnection)connection);
                 
             command.Parameters.Add(new SqlParameter("@Email", SqlDbType.NVarChar, 50) { Value = email });
@@ -41,13 +41,18 @@ public class AuthService : IAuthService
                 return null;
             }
 
+            var UserID = await command.ExecuteScalarAsync();
+            string UserIDAsString = UserID.ToString();
+            
+            // Console.WriteLine(UserIDAsString);
+
             var Claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, email)
+                new Claim(ClaimTypes.Name, email),
+                new Claim(ClaimTypes.NameIdentifier, UserIDAsString)
             };
-            
+
             var identity = new ClaimsIdentity(Claims, CookieAuthenticationDefaults.AuthenticationScheme);
-            var principal = new ClaimsPrincipal(identity);
 
             return new ClaimsPrincipal(identity);
         }

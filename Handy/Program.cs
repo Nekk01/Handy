@@ -16,11 +16,13 @@ namespace Handy
 
             // Services
             builder.Services.AddScoped<IAuthService, AuthService>();
+            builder.Services.AddScoped<IADService, ADService>();
 
             var connectionString = builder.Configuration.GetConnectionString("SQLConnection");
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
+            builder.Services.AddHttpContextAccessor();
 
             builder.Services.AddAuthentication("Cookie").AddCookie("Cookie", options =>
             {

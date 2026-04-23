@@ -35,7 +35,7 @@ namespace Handy.Controllers
         [HttpPost("login")]
         public async Task<IActionResult> LoginProceed(loginModel model)
         {
-            var principal = await _authService.AuthenticateUser(model.login, model.password);
+            var principal = await _authService.AuthenticateUser(model.email, model.password);
 
             if (principal == null)
             {
@@ -44,7 +44,6 @@ namespace Handy.Controllers
             }
 
             await HttpContext.SignInAsync("Cookie", principal);
-
             return Redirect(Url.Action("Billutinboard", "Billutinboard"));
         }
 
